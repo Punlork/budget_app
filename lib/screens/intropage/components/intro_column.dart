@@ -1,10 +1,23 @@
-import 'package:budget_app/screens/homepage.dart';
+import 'package:budget_app/constaints.dart';
+import 'package:budget_app/screens/homepage/homepage.dart';
 import 'package:flutter/material.dart';
 
-class IntroColumn extends StatelessWidget {
+class IntroColumn extends StatefulWidget {
   const IntroColumn({
     Key? key,
   }) : super(key: key);
+
+  @override
+  _IntroColumnState createState() => _IntroColumnState();
+}
+
+class _IntroColumnState extends State<IntroColumn> {
+  void press() {
+    setState(() {
+      Navigator.of(context)
+          .pushNamedAndRemoveUntil(Homepage.routeName, (route) => false);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +32,9 @@ class IntroColumn extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                fit: BoxFit.fill,
+                fit: BoxFit.fitHeight,
                 image: NetworkImage(
-                  'https://play-lh.googleusercontent.com/M0HFyRzZamsOTi94PfHAVKg_FrIHHOoAYCJeU5wMzWxgukn71QbOrBOzrHnZGFJYbBqo',
-                ),
+                    'https://cdn.dribbble.com/users/418188/screenshots/3819319/logo_animation_tubik_design.gif'),
               ),
             ),
           ),
@@ -46,7 +58,7 @@ class IntroColumn extends StatelessWidget {
         ),
         InkWell(
           borderRadius: BorderRadius.circular(15),
-          onTap: () => Navigator.of(context).pushNamed(Homepage.routeName),
+          onTap: () => press(),
           child: Container(
             height: 50,
             width: 350,
@@ -58,7 +70,7 @@ class IntroColumn extends StatelessWidget {
             child: Text(
               "Let's Start",
               style: TextStyle(
-                color: Theme.of(context).primaryColor,
+                color: KBlackTextColor,
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),
