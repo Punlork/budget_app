@@ -26,17 +26,11 @@ class _IntroColumnState extends State<IntroColumn> {
       children: [
         Align(
           alignment: Alignment.center,
-          child: Container(
-            height: 300,
-            width: 300,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                fit: BoxFit.fitHeight,
-                image: NetworkImage(
-                    'https://cdn.dribbble.com/users/418188/screenshots/3819319/logo_animation_tubik_design.gif'),
-              ),
+          child: CircleAvatar(
+            backgroundImage: AssetImage(
+              'lib/assets/images/Monkey.png',
             ),
+            radius: 150,
           ),
         ),
         Text(

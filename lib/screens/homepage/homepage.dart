@@ -1,7 +1,8 @@
-import 'package:budget_app/constaints.dart';
 import 'package:flutter/material.dart';
 
 import './components/body.dart';
+import '/constaints.dart';
+import 'components/drawer.dart';
 
 class Homepage extends StatelessWidget {
   static const routeName = '/Homepage';
@@ -13,7 +14,7 @@ class Homepage extends StatelessWidget {
     return Scaffold(
       backgroundColor: kPrimaryColor,
       appBar: buildAppBar(theme),
-      drawer: Drawer(),
+      drawer: CustomDrawer(),
       body: SingleChildScrollView(child: Body()),
     );
   }

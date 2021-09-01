@@ -1,51 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constaints.dart';
+import '/providers/items_provider.dart';
 
 class CategoriesItems extends StatelessWidget {
-  const CategoriesItems({
-    Key? key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 220,
-      width: double.infinity,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        padding: EdgeInsets.all(8.0),
-        children: [
-          categoryImages('lib/assets/images/Giant.jpg', 'Transportation'),
-          categoryImages('lib/assets/images/index1.jpg', 'Shoes '),
-          categoryImages('lib/assets/images/index.jpg', 'Electronic Devices'),
-        ],
-      ),
-    );
-  }
-
-  Padding categoryImages(String imageUrl, String title) {
-    return Padding(
-      padding: const EdgeInsets.all(kDefualtPadding - 20),
-      child: Column(
-        children: [
-          CircleAvatar(
-            radius: 60,
-            backgroundImage: AssetImage(imageUrl),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Text(
-            title,
-            style: TextStyle(
-              color: kWhiteTextColor,
-              fontWeight: FontWeight.bold,
+    final itemsData = Provider.of<Items>(context);
+    final items = itemsData.items;
+    return ListView.builder(
+      itemBuilder: (ctx, index) => Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: kDefualtPadding - 20,
+          vertical: kDefualtPadding - 10,
+        ),
+        child: Column(
+          children: [
+            GestureDetector(
+              onTap: () {
+                print('Recent Item');
+              },
+              child: CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage(
+                  items[index].imageUrl,
+                ),
+              ),
             ),
-          ),
-        ],
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              width: 100,
+              alignment: Alignment.center,
+              child: Text(
+                items[index].category,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: kWhiteTextColor,
+                ),
+                softWrap: true,
+              ),
+            )
+          ],
+        ),
       ),
+      itemCount: 3,
+      scrollDirection: Axis.horizontal,
+      physics: NeverScrollableScrollPhysics(),
     );
   }
 }

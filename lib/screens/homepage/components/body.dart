@@ -18,22 +18,26 @@ class Body extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        Text(
-          'Categories List',
-          style: Theme.of(context).textTheme.headline6!.copyWith(
-                color: kWhiteTextColor,
-                fontWeight: FontWeight.bold,
-              ),
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 5),
+          width: 150,
+          child: Text(
+            'Categories List',
+            style: Theme.of(context).textTheme.headline6!.copyWith(
+                  color: kWhiteTextColor,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
         ),
         Container(
           height: 2,
-          width: 155,
-          color: kWhiteTextColor,
+          width: 150,
+          color: kLightColor,
         ),
         SizedBox(
-          height: 20,
+          height: size.height * 0.3,
+          child: CategoriesItems(),
         ),
-        CategoriesItems(),
       ],
     );
   }
