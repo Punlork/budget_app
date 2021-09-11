@@ -5,7 +5,7 @@ import 'item.dart';
 class Items with ChangeNotifier {
   List<Item> _items = [
     Item(
-      id: 'i1',
+      id: 1,
       title: 'Road Bike',
       price: 500,
       date: '22 Agust 2020',
@@ -15,17 +15,7 @@ class Items with ChangeNotifier {
       category: 'Vechile',
     ),
     Item(
-      id: 'i2',
-      title: 'ROG Stix G17',
-      date: '15 May 2018',
-      price: 1500,
-      description:
-          'The ROG Strix G17 embodies a streamlined design, offering a formidable core experience for serious gaming and multitasking on Windows 10. Featuring the latest 10th Gen Intel® Core™ i7 CPU and a GeForce RTX™ GPU, it offers high-FPS power that takes full advantage of its high refresh rate display.',
-      imageUrl: 'lib/assets/images/Laptop.jpg',
-      category: 'Electronics',
-    ),
-    Item(
-      id: 'i3',
+      id: 2,
       title: 'IPhone 12 Pro Max',
       date: '30 March 2019',
       price: 1000,
@@ -35,7 +25,17 @@ class Items with ChangeNotifier {
       category: 'Electronics',
     ),
     Item(
-      id: 'i4',
+      id: 3,
+      title: 'ROG Stix G17',
+      date: '15 May 2018',
+      price: 1500,
+      description:
+          'The ROG Strix G17 embodies a streamlined design, offering a formidable core experience for serious gaming and multitasking on Windows 10. Featuring the latest 10th Gen Intel® Core™ i7 CPU and a GeForce RTX™ GPU, it offers high-FPS power that takes full advantage of its high refresh rate display.',
+      imageUrl: 'lib/assets/images/Laptop.jpg',
+      category: 'Electronics',
+    ),
+    Item(
+      id: 4,
       title: 'Nike Air Jorden',
       date: '11 August 2021',
       price: 300,
@@ -48,6 +48,11 @@ class Items with ChangeNotifier {
 
   List<Item> get items {
     return [..._items];
+  }
+
+  void showMostExpensiveItem() {
+    items.sort((a, b) => b.price.compareTo(a.price));
+    notifyListeners();
   }
 
   void addItem() {

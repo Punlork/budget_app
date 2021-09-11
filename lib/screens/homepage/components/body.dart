@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import './categories_list.dart';
 import '../../../constaints.dart';
-import './half_top_widget.dart';
+import 'half_top/half_top_widget.dart';
 
 class Body extends StatelessWidget {
   const Body({
@@ -16,7 +16,7 @@ class Body extends StatelessWidget {
       children: [
         HalfTop(size: size),
         SizedBox(
-          height: 10,
+          height: kDefualtPadding - 10,
         ),
         Container(
           padding: EdgeInsets.symmetric(vertical: 5),
@@ -33,6 +33,9 @@ class Body extends StatelessWidget {
           height: 2,
           width: 150,
           color: kLightColor,
+        ),
+        SizedBox(
+          height: kDefualtPadding - 20,
         ),
         SizedBox(
           height: size.height * 0.3,

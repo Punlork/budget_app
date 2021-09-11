@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constaints.dart';
+import '../../../../constaints.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({
@@ -10,7 +10,7 @@ class SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: 30,
+      bottom: 15,
       left: 0,
       right: 0,
       child: Container(

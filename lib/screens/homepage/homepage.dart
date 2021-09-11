@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import './components/body.dart';
 import '/constaints.dart';
-import 'components/drawer.dart';
+import 'components/drawers/drawer.dart';
+import 'package:budget_app/screens/add_item_page/add_item_page.dart';
 
 class Homepage extends StatelessWidget {
   static const routeName = '/Homepage';
@@ -13,13 +14,13 @@ class Homepage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: kPrimaryColor,
-      appBar: buildAppBar(theme),
+      appBar: buildAppBar(theme, context),
       drawer: CustomDrawer(),
       body: SingleChildScrollView(child: Body()),
     );
   }
 
-  AppBar buildAppBar(ThemeData theme) {
+  AppBar buildAppBar(ThemeData theme, BuildContext context) {
     return AppBar(
       elevation: 0,
       title: Container(
@@ -42,7 +43,9 @@ class Homepage extends StatelessWidget {
       centerTitle: true,
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, AddItemPage.routName);
+          },
           icon: Icon(
             Icons.add,
             size: 35,

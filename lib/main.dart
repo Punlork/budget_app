@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'constaints.dart';
 import 'providers/items_provider.dart';
+import 'screens/add_item_page/add_item_page.dart';
 import 'screens/intropage/intro_page.dart';
 import 'screens/homepage/homepage.dart';
 
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primaryColor: kPrimaryColor,
           accentColor: kWhiteTextColor,
+          canvasColor: kBackgroundColor,
           appBarTheme: AppBarTheme(
             color: kBackgroundColor,
           ),
@@ -27,6 +29,7 @@ class MyApp extends StatelessWidget {
         home: IntroPage(),
         routes: {
           Homepage.routeName: (ctx) => Homepage(),
+          AddItemPage.routName: (ctx) => AddItemPage(),
         },
       ),
     );

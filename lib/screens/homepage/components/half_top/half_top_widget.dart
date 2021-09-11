@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../constaints.dart';
+import '../../../../constaints.dart';
+import 'most_expensive_item.dart';
+
 import 'recent_item.dart';
 import 'search_bar.dart';
 
-class HalfTop extends StatelessWidget {
+class HalfTop extends StatefulWidget {
   const HalfTop({
     Key? key,
     required this.size,
@@ -13,9 +15,17 @@ class HalfTop extends StatelessWidget {
   final Size size;
 
   @override
+  _HalfTopState createState() => _HalfTopState();
+}
+
+class _HalfTopState extends State<HalfTop> {
+  bool recentText = false;
+  bool mostExpensiveText = false;
+
+  @override
   Widget build(BuildContext context) {
     return Container(
-      height: size.height * 0.5,
+      height: widget.size.height * 0.5,
       child: Stack(
         children: [
           Container(
@@ -47,19 +57,38 @@ class HalfTop extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Recently Added',
-                      style: Theme.of(context).textTheme.headline6!.copyWith(
-                            color: kWhiteTextColor,
-                            fontWeight: FontWeight.bold,
-                          ),
+                    Container(
+                      child: mostExpensiveText
+                          ? Text(
+                              'Most Expensive',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6!
+                                  .copyWith(
+                                    color: kWhiteTextColor,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            )
+                          : Text(
+                              'Recently Added',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6!
+                                  .copyWith(
+                                    color: kWhiteTextColor,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                     ),
                     SizedBox(
                       width: 50,
                     ),
                     IconButton(
                       onPressed: () {
-                        print('back');
+                        setState(() {
+                          recentText = !recentText;
+                          mostExpensiveText = !mostExpensiveText;
+                        });
                       },
                       icon: Icon(
                         Icons.navigate_before,
@@ -69,7 +98,10 @@ class HalfTop extends StatelessWidget {
                     ),
                     IconButton(
                       onPressed: () {
-                        print('next');
+                        setState(() {
+                          recentText = !recentText;
+                          mostExpensiveText = !mostExpensiveText;
+                        });
                       },
                       icon: Icon(
                         Icons.navigate_next,
@@ -86,7 +118,9 @@ class HalfTop extends StatelessWidget {
                 color: kLightColor,
               ),
               SizedBox(height: 20),
-              Recentitem(),
+              Container(
+                child: !recentText ? Recentitem() : MostExpensiveItem(),
+              ),
             ],
           ),
           SearchBar(),
